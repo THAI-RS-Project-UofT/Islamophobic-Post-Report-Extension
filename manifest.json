@@ -1,0 +1,43 @@
+{
+    "name": "Report Islamophobic Content",
+    "description": "Report hate speech",
+    "version": "0.1.0",
+    "manifest_version": 3,
+    "icons": {
+        "128": "./images/128.png"
+    },
+    "background": {
+        "service_worker": "./background.js"
+    },
+    "action": {
+        "default_popup": "./popup.html",
+        "default_icons": {
+            "128": "./images/128.png"
+        }
+    },
+    "options_page": "./options.html",
+    "permissions": [
+        "activeTab",
+        "tabs",
+        "storage",
+        "scripting"
+    ],
+    "host_permissions": [
+        "<all_urls>"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "http://*/*"
+            ],
+            "css": [
+                "core.css"
+            ],
+            "js": [
+                "core.js"
+            ],
+            "run_at": "document_end",
+            "all_frames": true
+        }
+    ]
+}
